@@ -20,5 +20,10 @@ class Rol extends Model
 
     protected $dates = ['deleted_at'];
     protected $hidden = ['created_at','updated_at','deleted_at'];
-    public static $directionOrder = ['ASC','ASC'];    
+    public static $directionOrder = ['ASC','ASC']; 
+    
+    public function personas()
+    {
+        return $this->belongsToMany(Rol::class, 'persona_roles');
+    } 
 }

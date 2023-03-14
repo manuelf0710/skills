@@ -24,4 +24,34 @@ class Persona extends Model
     protected $dates = ['deleted_at'];
     protected $hidden = ['created_at','updated_at','deleted_at'];
     public static $directionOrder = ['ASC','ASC']; 
+
+    public function practicas()
+    {
+        return $this->belongsToMany(Practica::class, 'persona_practicas');
+    } 
+
+    public function proyectos()
+    {
+        return $this->belongsToMany(Proyecto::class, 'persona_proyectos');
+    } 
+    
+    public function skills()
+    {
+        return $this->belongsToMany(Skill::class, 'persona_skills');
+    }  
+    
+    public function roles()
+    {
+        return $this->belongsToMany(Rol::class, 'persona_roles');
+    }     
+    
+    /*public function practicas()
+    {
+        return $this->belongsToMany(
+            Practica::class,
+            'persona_practicas',
+            'personas_id',
+            'practicas_id'
+        );
+    }  */  
 }
